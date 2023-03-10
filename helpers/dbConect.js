@@ -6,7 +6,7 @@ const conexion = async () => {
     try {
 
         const respuesta = await mongoose.connect(process.env.URI_CONECT)
-        console.log("estamos conectados")
+        console.log("estamos conectados a mongoose")
         return respuesta
 
 

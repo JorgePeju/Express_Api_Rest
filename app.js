@@ -31,6 +31,8 @@ conexion()
 // rutas
 app.use("/", require("./routers/routerFront"));
 
+app.use('/api/v1',require('./routers/apiRouter'))
+
 
 app.use((req,res,next)=>{
     res.status(404).render("404",{
