@@ -10,8 +10,8 @@ const getUsuarios = async (req, res) => {
 
         return res.status(200).json({
             ok: true,
-            msg: 'Obteniendo todos los servicios',
-            total_servicios: usuarios.length,
+            msg: 'Obteniendo todos los Usuarios',
+            total_usuarios: usuarios.length,
             limit: 30,
             data: usuarios
         })
@@ -20,7 +20,7 @@ const getUsuarios = async (req, res) => {
 
         return res.status(404).json({
             ok: false,
-            msg: 'Error al obtener los servicios'
+            msg: 'Error al obtener los Usuarios'
         })
     }
 }
@@ -43,7 +43,7 @@ const getUsuario = async (req, res) => {
         } else {
            return res.status(200).json({
                 ok: true,
-                msg: 'Obteniendo un servicio',
+                msg: 'Obteniendo un Usuario',
                 data: usuarios
             })
         }
@@ -53,7 +53,7 @@ const getUsuario = async (req, res) => {
 
         return res.status(500).json({
             ok: false,
-            msg: 'Error al obtener los servicios'
+            msg: 'Error al obtener los usuarios'
 
         })
     }
@@ -73,7 +73,7 @@ const crearUsuario = async (req, res) => {
 
         return res.status(201).json({
             ok: true,
-            msg: 'Servicio creado',
+            msg: 'Usuario creado',
             data: usuarios
         })
 
@@ -83,7 +83,7 @@ const crearUsuario = async (req, res) => {
 
         return res.status(500).json({
             ok: false,
-            msg: 'ERROR: no se ha podido crear el servicio.'
+            msg: 'ERROR: no se ha podido crear el usuario.'
         });
 
     };
@@ -91,7 +91,7 @@ const crearUsuario = async (req, res) => {
 }
 
 
-// actualizar un servicio (put)
+// actualizar un usuario (put)
 
 const actualizarUsuario = async (req, res) => {
 
@@ -113,7 +113,7 @@ const actualizarUsuario = async (req, res) => {
         }else {
             return res.status(200).json({
             ok: true,
-            msg: 'Actualizando un servicio',
+            msg: 'Actualizando usuario',
             data: usuarioActualizado,
         })
     }
@@ -149,7 +149,7 @@ const eliminarUsuario = async (req, res) => {
             await Usuarios.findByIdAndDelete({ _id: id });
             return res.status(200).json({
             ok: true,
-            msg: 'Eliminado el servicio',
+            msg: 'Eliminado usuario',
         })
     }
 
@@ -157,7 +157,7 @@ const eliminarUsuario = async (req, res) => {
 
         return res.status(500).json({
             ok: false,
-            msg: 'Error al eliminar el servicios'
+            msg: 'Error al eliminar el usuario'
         })
 
     }

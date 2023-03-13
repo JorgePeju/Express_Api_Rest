@@ -147,7 +147,7 @@ const eliminarServicio = async (req, res) => {
             
         }
         else {
-            await Servicio.findByIdAndDelete({ _id: id });
+          await Servicio.findByIdAndDelete({ _id: id });
             return res.status(200).json({
             ok: true,
             msg: 'Eliminado el servicio',
