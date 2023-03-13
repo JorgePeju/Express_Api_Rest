@@ -41,7 +41,7 @@ app.use("/", require("./routers/routerFront"));
 
 app.use('/api/v1',require('./routers/apiRouter'));
 
-app.use('/api/v2',require('./routers/apiUsuariosRouter'));
+app.use('/api/v1',require('./routers/apiUsuariosRouter'));
 
 // app.use('/productos',require('./routers/scrapRouter'));
 

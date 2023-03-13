@@ -6,7 +6,7 @@ const getUsuarios = async (req, res) => {
 
     try {
 
-        const usuarios = await Servicio.find()
+        const usuarios = await Usuarios.find()
 
         return res.status(200).json({
             ok: true,
@@ -121,24 +121,24 @@ const actualizarUsuario = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             ok: false,
-            msg: 'Error al actualizar el servicios'
+            msg: 'Error al actualizar el usuario'
         })
     }
 
 }
 
 
-// eliminar un servicio
+// eliminar un usuario
 
-const eliminarServicio = async (req, res) => {
+const eliminarUsuario = async (req, res) => {
 
     try {
 
         const id = req.params.id;
        
        
-        const servicios = await Servicio.findById(id)
-        if (!servicios) {
+        const Usuarios = await Usuarios.findById(id)
+        if (!Usuarios) {
             return res.status(404).json({
                 ok: false,
                 msg: 'CUATROCIENTOS CUATRO NOOOOOO!'
@@ -146,7 +146,7 @@ const eliminarServicio = async (req, res) => {
             
         }
         else {
-            await Servicio.findByIdAndDelete({ _id: id });
+            await Usuarios.findByIdAndDelete({ _id: id });
             return res.status(200).json({
             ok: true,
             msg: 'Eliminado el servicio',
@@ -165,10 +165,10 @@ const eliminarServicio = async (req, res) => {
 
 module.exports = {
 
-    getServicios,
-    getServicio,
-    crearServicio: crearUsuario,
-    actualizarServicio,
-    eliminarServicio
+    getUsuarios,
+    getUsuario,
+    crearUsuario,
+    actualizarUsuario,
+    eliminarUsuario
 
 }
