@@ -24,7 +24,8 @@ router.get('/usuarios/:id', getUsuario);
 router.post('/usuarios', 
 
     [check('nombre', 'El nombre es obligatorio').not().isEmpty(),
-    check('descripcion', 'La descripción es obligatoria').not().isEmpty(),
+    check('email', 'El email es obligatorio').not().isEmpty(),
+    check('password', 'La contraseña es obligatoria').not().isEmpty(),
     validarInputs],   // servicio es body.servicio y el mensaje del error
     crearUsuario);
 
@@ -33,7 +34,8 @@ router.post('/usuarios',
 router.put('/usuarios/:id',
 
     [check('nombre', 'El servicio es obligatorio').not().isEmpty(),
-    check('descripcion', 'La descripción es obligatoria').not().isEmpty(),
+    check('email', 'El email es obligatorio').not().isEmpty(),
+    check('password', 'La contraseña es obligatoria').not().isEmpty(),
     validarInputs],  // servicio es body.servicio y el mensaje del error
     actualizarUsuario);
 
