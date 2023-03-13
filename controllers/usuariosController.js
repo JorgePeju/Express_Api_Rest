@@ -1,21 +1,19 @@
+const Usuarios = require('../models/usuarioModel');
 
+// get todos los usuarios
 
-const Servicio = require('../models/servicioModel');
-
-// get todos los servicios
-
-const getServicios = async (req, res) => {
+const getUsuarios = async (req, res) => {
 
     try {
 
-        const servicios = await Servicio.find()
+        const usuarios = await Servicio.find()
 
         return res.status(200).json({
             ok: true,
             msg: 'Obteniendo todos los servicios',
-            total_servicios: servicios.length,
+            total_servicios: usuarios.length,
             limit: 30,
-            data: servicios
+            data: usuarios
         })
 
     } catch (error) {
@@ -27,16 +25,16 @@ const getServicios = async (req, res) => {
     }
 }
 
-// get un servicio
+// get un usuario
 
-const getServicio = async (req, res) => {
+const getUsuario = async (req, res) => {
 
     try {
 
         const id = req.params.id;
-        const servicios = await Servicio.findById(id)
+        const usuarios = await Usuarios.findById(id)
 
-        if (!servicios) {
+        if (!usuarios) {
             return res.status(404).json({
                 ok: false,
                 msg: 'CUATROCIENTOS CUATRO NOOOOOO!'
@@ -46,7 +44,7 @@ const getServicio = async (req, res) => {
            return res.status(200).json({
                 ok: true,
                 msg: 'Obteniendo un servicio',
-                data: servicios
+                data: usuarios
             })
         }
 
@@ -62,21 +60,21 @@ const getServicio = async (req, res) => {
 
 }
 
-// crear un servicio (post)
+// crear un usuario (post)
 
-const crearServicio = async (req, res) => {
+const crearUsuario = async (req, res) => {
 
 
-    const newServicio = new Servicio(req.body);
+    const newUsuario = new Usuarios(req.body);
 
     try {
 
-        const servicios = await newServicio.save()
+        const usuarios = await newUsuario.save()
 
         return res.status(201).json({
             ok: true,
             msg: 'Servicio creado',
-            data: servicios
+            data: usuarios
         })
 
     } catch (error) {
@@ -95,17 +93,18 @@ const crearServicio = async (req, res) => {
 
 // actualizar un servicio (put)
 
-const actualizarServicio = async (req, res) => {
+const actualizarUsuario = async (req, res) => {
 
     try {
 
         const id = req.params.id;
-        const servicio = req.body.servicio;
-        const descripcion = req.body.descripcion;
+        const nombre = req.body.nombre;
+        const email = req.body.email;
+        const password = req.body.password;
 
-        const servicioActualizado = await Servicio.findByIdAndUpdate({ _id: id }, { $set: { servicio, descripcion } }, { new: true })
+        const usuarioActualizado = await Usuarios.findByIdAndUpdate({ _id: id }, { $set: { nombre, email, password } }, { new: true })
 
-        if (!servicioActualizado) {
+        if (!usuarioActualizado) {
             return res.status(404).json({
                 ok: false,
                 msg: 'CUATROCIENTOS CUATRO NOOOOOO!'
@@ -115,7 +114,7 @@ const actualizarServicio = async (req, res) => {
             return res.status(200).json({
             ok: true,
             msg: 'Actualizando un servicio',
-            data: servicioActualizado,
+            data: usuarioActualizado,
         })
     }
 
@@ -168,7 +167,7 @@ module.exports = {
 
     getServicios,
     getServicio,
-    crearServicio,
+    crearServicio: crearUsuario,
     actualizarServicio,
     eliminarServicio
 

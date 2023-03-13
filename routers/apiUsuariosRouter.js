@@ -8,19 +8,19 @@ const { check } = require('express-validator');
 const { validarInputs } = require('../middleware/validarInputs');
 
 
-const { getServicios, getServicio, crearServicio, actualizarServicio, eliminarServicio } = require("../controllers/apiControllers");
+const { getUsuarios, getServicio, crearServicio, actualizarServicio, eliminarServicio } = require("../controllers/apiControllers");
 
 
 // get todos
-router.get('/servicios', getServicios);
+router.get('/usuarios', getUsuarios);
 
 
 // get uno
-router.get('/servicios/:id', getServicio);
+router.get('/usuarios/:id', getServicio);
 
 
 // crear uno (post)
-router.post('/servicios', 
+router.post('/usuarios', 
 
     [check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('descripcion', 'La descripción es obligatoria').not().isEmpty(),
@@ -29,7 +29,7 @@ router.post('/servicios',
 
 
 // actualizar uno (put)
-router.put('/servicios/:id',
+router.put('/usuarios/:id',
 
     [check('nombre', 'El servicio es obligatorio').not().isEmpty(),
     check('descripcion', 'La descripción es obligatoria').not().isEmpty(),
@@ -38,7 +38,7 @@ router.put('/servicios/:id',
 
 
 // elminar uno
-router.delete('/servicios/:id', eliminarServicio);
+router.delete('/usuarios/:id', eliminarServicio);
 
 //Exportamos 
 module.exports = router
